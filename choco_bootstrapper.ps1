@@ -1,3 +1,14 @@
+# choco_bootstrapper.ps1
+
+# Check for admin rights
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Error "Please run this script as Administrator!"
+    exit 1
+}
+
+# Optional: Start transcript AFTER the admin check
+Start-Transcript -Path "C:\logs\session-transcript.txt" -Append -Force
+
 param (
     [string]$PackageFile,
     [switch]$Interactive,
