@@ -22,7 +22,7 @@ Start-Transcript -Path "C:\logs\session-transcript.txt" -Append -Force
 
 if ($Help) {
     Write-Host @"
-Usage: setup.ps1 [-PackageFile path] [-Interactive] [-YesToAll] [-Help]
+Usage: choco_bootstrapper.ps1 [-PackageFile path] [-Interactive] [-YesToAll] [-Help]
 
 - If -PackageFile is provided, reads package names from the file.
 - If -Interactive is used (or no file is given), prompts for input.
