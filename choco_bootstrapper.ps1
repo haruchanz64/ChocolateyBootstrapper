@@ -1,8 +1,11 @@
 # choco_bootstrapper.ps1
 
-# Check for admin rights
-if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Error "Please run this script as Administrator!"
+# Admin check that works reliably even under 'iex'
+$currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
+
+if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "This script must be run as Administrator." -ForegroundColor Red
     exit 1
 }
 
