@@ -23,12 +23,8 @@ Supports both interactive input and predefined package lists for fast setup.
 If you uploaded this script to a Gist or GitHub repo and have a raw link (like below), you can run it in one line:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; irm https://gist.githubusercontent.com/yourusername/gist-id/raw/choco_bootstrapper.ps1 | iex
+Set-ExecutionPolicy Bypass -Scope Process -Force; irm https://raw.githubusercontent.com/haruchanz64/chocolatey-bootstrapper/refs/heads/main/choco_bootstrapper.ps1 | iex
 ```
-
-> Replace the URL with your actual raw script link (e.g., from GitHub Gist)
-
----
 
 ### Interactive mode (enter packages manually)
 ```powershell
