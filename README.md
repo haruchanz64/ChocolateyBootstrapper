@@ -18,9 +18,7 @@ Supports both interactive input and predefined package lists for fast setup.
 
 ## Usage
 
-### Run directly from the web (via GitHub Gist or raw URL)
-
-If you uploaded this script to a Gist or GitHub repo and have a raw link (like below), you can run it in one line:
+### Run the following command in PowerShell (as Administrator):
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; irm https://raw.githubusercontent.com/haruchanz64/chocolatey-bootstrapper/refs/heads/main/choco_bootstrapper.ps1 | iex
@@ -64,7 +62,7 @@ Find official package names at: https://community.chocolatey.org/packages
 
 ## Tips: Use Profiles
 
-You can create reusable profiles for different stacks:
+You can create reusable profiles:
 
 ```
 web_dev.txt
