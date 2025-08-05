@@ -21,7 +21,7 @@ Supports both interactive input and predefined package lists for fast setup.
 ### Run the following command in PowerShell (as Administrator):
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; irm https://raw.githubusercontent.com/haruchanz64/chocolatey-bootstrapper/refs/heads/main/choco_bootstrapper.ps1 | iex
+Set-ExecutionPolicy Bypass -Scope Process -Force; irm https://raw.githubusercontent.com/haruchanz64/chocolateybootstrapper/refs/heads/main/choco_bootstrapper.ps1 | iex
 ```
 
 ### Interactive mode (enter packages manually)
