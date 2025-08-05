@@ -1,23 +1,24 @@
 # choco_bootstrapper.ps1
 
-# Admin check that works reliably even under 'iex'
-$currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
-
-if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Host "This script must be run as Administrator." -ForegroundColor Red
-    exit 1
-}
-
-# Optional: Start transcript AFTER the admin check
-Start-Transcript -Path "C:\logs\session-transcript.txt" -Append -Force
-
 param (
     [string]$PackageFile,
     [switch]$Interactive,
     [switch]$Help,
     [switch]$YesToAll
 )
+# Admin check that works reliably even under 'iex'
+$currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
+
+if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "This script must be run as Administrator." -ForegroundColor Red
+    Write-Host "Please right-click the PowerShell icon and select 'Run as Administrator'." -ForegroundColor Yellow
+    Read-Host "Press Enter to exit"
+    exit 1
+}
+
+# Optional: Start transcript AFTER the admin check
+Start-Transcript -Path "C:\logs\session-transcript.txt" -Append -Force
 
 if ($Help) {
     Write-Host @"
@@ -61,7 +62,7 @@ if ($PackageFile) {
         Where-Object { $_ -and ($_ -notmatch '^\s*#') }
 }
 elseif ($Interactive -or -not $PackageFile) {
-    $inputString = Read-Host "Enter package names (space-separated)"
+    $inputString = Read-Host "Enter package names (space-separated) or press Enter to cancel."
     $packages = $inputString -split '\s+' | Where-Object { $_ }
 }
 
