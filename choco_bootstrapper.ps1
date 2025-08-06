@@ -33,7 +33,17 @@ if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administra
 
 # === Help Display ===
 if ($Help) {
+<<<<<<< HEAD
     Show-Help
+=======
+    Write-Host @"
+Usage: choco_bootstrapper.ps1 [-PackageFile path] [-Interactive] [-YesToAll] [-Help]
+
+- If -PackageFile is provided, reads package names from the file.
+- If -Interactive is used (or no file is given), prompts for input.
+- If -YesToAll is used, all installations are auto-confirmed.
+"@
+>>>>>>> 638433dffb4327f7018dffb76a96b14dd446686e
     exit 0
 }
 
