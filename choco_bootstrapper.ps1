@@ -155,7 +155,7 @@ if (-not (Test-Connection -ComputerName "community.chocolatey.org" -Count 1 -Qui
 
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Write-Host "Installing Chocolatey..."
-    iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
     Start-Sleep -Seconds 5
 } else {
     Write-Host "Chocolatey already installed."
